@@ -15,34 +15,29 @@ bot =telebot.TeleBot(telegram_token)
 
 
 
-def start_schedule():
-    schedule.every(10).seconds.do(send_message1)
-    while True:  # Запуск цикла
-        schedule.run_pending()
-        time.sleep(1)
+
 
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    #USER_ID = message.from_user.id
-    #USER_ID = message.chat.id
-    bot.send_message(message.chat.id, f'Нажали start {message.chat.id}')
-    msg = bot.reply_to(message, "fабвг")
+    msg = bot.send_message(message.chat.id, f'Нажали start {message.chat.id}')
     bot.register_next_step_handler(msg, start_process(msg))
-    #start_process()
 
 def start_process(msg):  # Запуск Process
     global USER_ID
     USER_ID = msg.chat.id
-    print(USER_ID)
-    p1 = Process(target=start_schedule, args=()).start()
+    p1 = Process(target=start_schedule(USER_ID), args=()).start()
+
+def start_schedule(USER_ID):
+    schedule.every(10).seconds.do(send_message1)
+    while True:  # Запуск цикла
+        schedule.run_pending()
+        time.sleep(1)
 
 def send_message1():
-    #global USER_ID
-    print(USER_ID)
     bot.send_message(USER_ID, 'Отправка сообщения по времени')
-    #94046674
+
 
 if __name__ == '__main__':
     try:
