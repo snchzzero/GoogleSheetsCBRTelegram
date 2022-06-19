@@ -1,7 +1,7 @@
 from config import telegram_token, db_host, db_user, db_password, db_name, db_port
 import telebot
 import time
-import datetime
+
 from multiprocessing import *
 import schedule
 from script import db_google_sheets
@@ -56,13 +56,13 @@ def start(message):
     #schedule.cancel_job(start_schedule(USER_ID))
 
 
+bot.polling(none_stop=True)
 
 
-
-if __name__ == '__main__':
-    try:
-        bot.polling(none_stop=True)
-    except:
-        pass
+# if __name__ == '__main__':
+#     try:
+#         bot.polling(none_stop=True)
+#     except:
+#         pass
 
 

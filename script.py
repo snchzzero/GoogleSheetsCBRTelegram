@@ -1,5 +1,4 @@
 # для google_API
-from pprint import pprint
 import httplib2
 from googleapiclient import discovery  # вместо apiclient.discovery
 from oauth2client.service_account import ServiceAccountCredentials
@@ -12,9 +11,7 @@ import xmltodict
 
 # для логов
 from datetime import datetime
-import sys
-import time
-import sys
+
 
 # функция чтения гугл таблицы
 def google_API():
