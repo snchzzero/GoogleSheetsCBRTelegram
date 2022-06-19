@@ -96,6 +96,7 @@ def db_google_sheets():
             order_number = values['values'][i][1]
             value_dolar  = values['values'][i][2]
             value_rub = round(usd * int(value_dolar), 0)
+            # delivery_time = values['values'][i][3]  # для локального сервера PostgreSQL
             delivery_time  = str(values['values'][i][3]).split('.')[2]+"."+\
                              str(values['values'][i][3]).split('.')[1]+"."+ \
                              str(values['values'][i][3]).split('.')[0]
@@ -114,12 +115,6 @@ def db_google_sheets():
             ORDER BY delivery_time""")
             l1 = cursor.fetchall()
             return (l1)
-            # print(l1)
-            # for l in l1:
-            #     print("Значения", l)
-            #     print("*", l[1])
-            #     print()
-
 
     except Exception as _ex:
         #обработка ошибок
