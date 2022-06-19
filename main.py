@@ -56,13 +56,13 @@ def start(message):
     #schedule.cancel_job(start_schedule(USER_ID))
 
 
-bot.polling(none_stop=True)
+#bot.polling(none_stop=True)
 
 
-# if __name__ == '__main__':
-#     try:
-#         bot.polling(none_stop=True)
-#     except:
-#         pass
+if __name__ == '__main__':
+    try:
+        bot.polling(none_stop=True)
+    except:
+        pass
 
 
