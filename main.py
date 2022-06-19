@@ -14,11 +14,6 @@ def start_process(msg):  # Запуск Process
     p1 = Process(target=start_schedule(USER_ID), args=()).start()
 
 def start_schedule(USER_ID):
-    l1 = db_google_sheets()
-    message_string = "Cрок поставки прошел по следующим позициям: (сортировка по дате) \n"
-    for l in l1:
-        message_string += f"№{l[0]}, Заказ №{l[1]}, Срок: {l[2]} \n"
-    bot.send_message(USER_ID, message_string)
     schedule.every(3600).seconds.do(send_message1)
     #schedule.every().day.at("11:02").do(send_message1)
     while True:  # Запуск цикла
